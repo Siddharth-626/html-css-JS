@@ -8,14 +8,14 @@ form.addEventListener('submit',(e)=>{
 
 function validateForm() {
     let isValid = true;
-    let inputs = ['firstname','lastname','email'];
-    inputs.forEach((id)=>{
+    let arrOfId = ['firstname','lastname','email'];
+    arrOfId.forEach((id)=>{
         const input = document.getElementById(id);
         if(!input.value){
             isValid = false
             createSpan(`${id} is required.`,input)       
         }
-    })
+    });
     return isValid;
 }
 
@@ -23,8 +23,8 @@ function createSpan(message,input) {
     const span = document.createElement('span');
     span.textContent = message;
     span.className = 'error';
+    span.style.color = "red";
     input.parentNode.insertBefore(span,input.nextSibling)
-
 }
 function clearSpan() {
     const spans = document.querySelectorAll('.error');
@@ -36,7 +36,7 @@ function clearForm() {
     form.reset();
     clearSpan();
 }
-function createTable() {
+ function createTable() {
     const table = document.createElement('table');
 
     let data = {
